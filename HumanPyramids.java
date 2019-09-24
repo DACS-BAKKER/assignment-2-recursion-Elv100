@@ -8,7 +8,7 @@ public class HumanPyramids {
         StdOut.println("col:");
         int col = StdIn.readInt();
         double[][] mem = new double[row+1][row+1];
-        StdOut.println("weight carry: " + weight(mem, row, col));
+        StdOut.println("weight carry: " + weightOnBackOf(mem, row, col));
     }
 
     public static double weightOnBackOf(int row, int col) {
@@ -24,7 +24,7 @@ public class HumanPyramids {
         }
     }
 
-    public static double weight(double[][] mem, int row, int col) {
+    public static double weightOnBackOf(double[][] mem, int row, int col) {
         int halfPerson = 100;
         //can simply do row+1, row+1 because no illegal inputs
         if (row == 0 && col == 0) {
@@ -32,11 +32,11 @@ public class HumanPyramids {
         } else if (mem[row][col] != 0) {
             return mem[row][col];
         }else if (col == 0) {
-            mem[row][col] = halfPerson + weight(mem,row - 1, col) / 2;
+            mem[row][col] = halfPerson + weightOnBackOf(mem,row - 1, col) / 2;
         } else if (row == col) {
-            mem[row][col] = halfPerson + weight(mem,row - 1, col - 1) / 2;
+            mem[row][col] = halfPerson + weightOnBackOf(mem,row - 1, col - 1) / 2;
         } else {
-            mem[row][col] = halfPerson * 2 + weight(mem,row - 1, col - 1) / 2 + weightOnBackOf(row - 1, col) / 2;
+            mem[row][col] = halfPerson * 2 + weightOnBackOf(mem,row - 1, col - 1) / 2 + weightOnBackOf(row - 1, col) / 2;
         }
         return mem[row][col];
     }

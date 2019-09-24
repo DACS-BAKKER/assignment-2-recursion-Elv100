@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class CoinGame {
     private static int counter;
 
@@ -6,9 +8,9 @@ public class CoinGame {
         go(30, true);
 
         if (num % 3 == 0)
-            System.out.println("Picker 2 wins with " + counter + " ways");
+            StdOut.println("Picker 2 wins with " + counter + " ways");
         else
-            System.out.println("Picker 1 wins with " + counter + " ways");
+            StdOut.println("Picker 1 wins with " + counter + " ways");
     }
 
     public static void go(int n, boolean current_picker) {
